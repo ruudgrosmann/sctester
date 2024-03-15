@@ -1,0 +1,41 @@
+{
+  "name": "sduconnettesten",
+  "version": "1.0.0",
+  "description": "testen van sduConnect met cypress",
+  "main": "index.js",
+  "dependencies": {
+    "cypress-wait-until": "^1.7.2"
+  },
+  "devDependencies": {
+    "cypress": "^13.3.3",
+    "cypress-cucumber-preprocessor": "^2.5.5",
+    "cypress-localstorage-commands": "^2.2.1",
+    "multiple-cucumber-html-reporter": "^3.6.1"
+  },
+  "scripts": {
+    "cypress:run": "cypress run",
+    "scripts":  "npx cypress run  --spec cypress/e2e/ts*.feature ",
+    "fhtmlreport": "node cucumber-htmlreport.js",
+    "htmlreport": "node screenshots.js",
+    "test" :    "npm run scripts -- --env TAGS=@f || npm run htmlreport"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": ".git"
+  },
+  "keywords": [
+    "hallo"
+  ],
+  "author": "ruud grosmann",
+  "license": "ISC",
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  }
+}
