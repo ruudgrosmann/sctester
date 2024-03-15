@@ -1,0 +1,26 @@
+name: tester
+on: push
+jobs:
+  tester:
+    runs-on: ubuntu-latest
+    environment: dev
+    env:
+      TESTUSER_PWD: ${{ secrets.SC_TESTUSER_PWD }}
+    steps:
+      - name: check out repostitory
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: installatie NPM
+        uses: actions/setup-node@v4
+        with:
+          cache: "npm"
+          node-version: 16.17.0
+      - run: npm ci
+        shell: bash
+      - name: acties
+        shell: bash
+        run: |
+          npm run scripts -- --env TAGS="(@nu and not @ignore)"
+      - run: echo "🍏 The status is ${{job.status}}."
+
