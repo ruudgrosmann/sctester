@@ -14,7 +14,7 @@
   },
   "scripts": {
     "cypress:run": "cypress run",
-    "scripts":  "npx cypress run  --spec cypress/e2e/ts*.feature ",
+    "scripts":  "npx cypress run  '--spec cypress/e2e/ts*.feature' ",
     "fhtmlreport": "node cucumber-htmlreport.js",
     "htmlreport": "node screenshots.js",
     "test" :    "npm run scripts -- --env TAGS=@f || npm run htmlreport"

@@ -21,6 +21,7 @@ jobs:
       - name: acties
         shell: bash
         run: |
+          ln -s e2e cypress/integration
           npm run scripts -- --env TAGS="(@nu and not @ignore)"
       - run: echo "🍏 The status is ${{job.status}}."
 
