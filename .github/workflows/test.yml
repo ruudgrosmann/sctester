@@ -6,6 +6,7 @@ jobs:
     environment: dev
     env:
       CYPRESS_TESTUSER_PWD: ${{ secrets.SC_TESTUSER_PWD }}
+      TESTER: ${{ vars.CYPRESS_TESTER }}
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
@@ -21,7 +22,10 @@ jobs:
       - name: acties
         shell: bash
         run: |
+          echo waarde is $TESTER
+          bin/verklap $CYPRESS_TESTUSER_PWD
           ln -s e2e cypress/integration
-          npm run scripts -- --env TAGS="(@nu and not @ignore)"
+          curl https://frontend.staging.sduconnect.nl/nl/users/login
+          npm run scripts -- --env TAGS="(@nu and not @ignore)" --env TESTUSER_PWD="${{ secrets.SC_TESTUSER_PWD }}"
       - run: echo "🍏 The status is ${{job.status}}."
 
