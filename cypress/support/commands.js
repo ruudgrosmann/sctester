@@ -35,7 +35,7 @@ Cypress.Commands.add('customer_login', (customername,
 		.type(customername);
 	cy.get('input#password')
 		.waitUntilDomAttached()
-		.type(Process.env.TESTUSER_PWD);
+		.type(Cypress.env( 'TESTUSER_PWD'));
 	cy.get('button').contains('Log in').click().then (() => {
 		if (accountname) {
 			cy.get(`p-dropdown#account`).click().then (() => {

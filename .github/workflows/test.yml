@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     env:
-      TESTUSER_PWD: ${{ secrets.SC_TESTUSER_PWD }}
+      CYPRESS_TESTUSER_PWD: ${{ secrets.SC_TESTUSER_PWD }}
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
